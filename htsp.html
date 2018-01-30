@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 引入vue.js -->
+<script type="text/javascript" src="./js/vue.js"></script>
+<!-- 引入mint组件库 -->
+<script src="./js/mint.js"></script>
+<!-- 引入mint样式 -->
+<link rel="stylesheet" href="./css/mintStyle.css">
+<title>合同审批</title>
+<style type="text/css">
+	html{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+	body{
+		margin: 0px;
+	}
+</style>
+</head>
+ 
+<body>
+	<div id="app">
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">商户名：</div>
+			<div style="margin-left: 290px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">宁波鄞州万达广场F1</div>
+			<div style="margin-left: 21px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					<img style="width:31px;height:21px;" src="./images/login_btn_pdl_p@2x.png">
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">申报人：</div>
+			<div style="margin-left: 78px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">旺财(P016)[阚广东(P019)]</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">场地名称：</div>
+			<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">宁波鄞州万达广场1楼电梯口</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">场地类型：</div>
+			<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">大型商业广场</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">设备型号：</div>
+			<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">B9</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">投放区域数量：</div>
+			<div style="margin-left: 22px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">2</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">区域1：</div>
+			<div style="margin-left: 16px;font-size:24px;font-family:PingFang-SC-Regular;color: #888888;">一楼KFC旁边</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;">
+			<div style="height: 1px;width: 118px;background-color: #fff;"></div>
+		</div>
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 114px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">数量(台)：</div>
+			<div style="margin-left: 24px;font-size:24px;font-family:PingFang-SC-Regular;color: #888888;">5</div>
+			<div style="margin-left: 116px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">面积(m²)：</div>
+			<div style="margin-left: 24px;font-size:24px;font-family:PingFang-SC-Regular;color: #888888;">40</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">区域2：</div>
+			<div style="margin-left: 16px;font-size:24px;font-family:PingFang-SC-Regular;color: #888888;">一楼KFC旁边</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;">
+			<div style="height: 1px;width: 118px;background-color: #fff;"></div>
+		</div>
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 114px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">数量(台)：</div>
+			<div style="margin-left: 24px;font-size:24px;font-family:PingFang-SC-Regular;color: #888888;">5</div>
+			<div style="margin-left: 116px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">面积(m²)：</div>
+			<div style="margin-left: 24px;font-size:24px;font-family:PingFang-SC-Regular;color: #888888;">40</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">场地联系信息</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地联系人：</div>
+			<div style="margin-left: 24px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">王思聪</div>
+			<div style="margin-left: 188px;display: flex;align-items: center;justify-content:flex-start;">
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+					<img src="./images/choose_s@2x.png" style="height: 24px;width: 24px;"/>
+				</div>
+				<div style="margin-left: 23px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+					男士
+				</div>
+			</div>
+			<div style="margin-left: 41px;display: flex;align-items: center;justify-content:flex-start;">
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+					<img src="./images/choose_u@2x.png" style="height: 24px;width: 24px;">
+				</div>
+				<div style="margin-left: 23px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+					女士
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地电话：</div>
+			<div style="margin-left: 52px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">13012345678</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">合作信息</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 15px;font-size:28px;font-family:PingFang-SC-Medium;color: #FF003C;">*</div>
+			<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">合作期限：</div>
+			<div style="margin-left: 57px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">12 月</div>
+			<div style="margin-left: 407px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+				<img style="width: 38px;height: 20px;" src="./images/login_btn_pdl_p@2x.png">
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 15px;font-size:28px;font-family:PingFang-SC-Medium;color: #FF003C;">*</div>
+			<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">合作模式：</div>
+			<div style="margin-left: 57px;font-size:28px;font-family:PingFang-SC-Medium;color: #888888;">分成模式</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 252px;width: 100%;display: flex;flex-direction: column;">
+			<div style="margin-top: 33px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 73px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					场地方分成：
+				</div>
+				<div style="margin-left: 13px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					10%
+				</div>
+			</div>
+			<div style="margin-top: 31px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 73px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					收款信息
+				</div>
+				<div style="margin-left: 20px;width: 1px;height:24px;font-size:28px;font-family:PingFang-SC-Medium;background-color:#888888;">
+				</div>
+				<div style="margin-left: 18px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					账户名：
+				</div>
+			</div>
+			<div style="margin-top: 35px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 207px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					开户行：
+				</div>
+			</div>
+			<div style="margin-top: 35px;display: flex;flex-direction: row;align-items: center;margin-bottom: 26px;">
+				<div style="margin-left: 207px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					卡号：
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">其他</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:32px;font-family:PingFang-SC-Medium;color: #353535;">其他费用：</div>
+			<div style="margin-left: 532px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+				<img style="width: 31px;height: 17px;" src="./images/login_btn_pdl_p@2x.png">
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 252px;width: 100%;display: flex;flex-direction: column;">
+			<div style="margin-top: 33px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 71px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					电费：
+				</div>
+				<div style="margin-left: 83px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					200
+				</div>
+				<div style="margin-left: 12px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					元/月
+				</div>
+				<div style="margin-left: 135px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					按
+				</div>
+				<div style="margin-left: 12px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					3
+				</div>
+				<div style="margin-left: 12px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					月/付
+				</div>
+			</div>
+			<div style="margin-top: 31px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 73px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					收款信息
+				</div>
+				<div style="margin-left: 20px;width: 1px;height:24px;font-size:28px;font-family:PingFang-SC-Medium;background-color:#888888;">
+				</div>
+				<div style="margin-left: 22px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					<img src="./images/choose_s@2x.png" style="height: 24px;width: 24px;"/>
+				</div>
+				<div style="margin-left: 23px;font-size:24px;font-family:PingFang-SC-Medium;color: #353535;">
+					默认场地方
+				</div>
+			</div>
+			<div style="margin-top: 35px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 205px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					账户名：（上面场地方信息）
+				</div>
+			</div>
+			<div style="margin-top: 35px;display: flex;flex-direction: row;align-items: center;">
+				<div style="margin-left: 205px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					开户行：（上面场地方信息）
+				</div>
+			</div>
+			<div style="margin-top: 35px;display: flex;flex-direction: row;align-items: center;margin-bottom: 24px;">
+				<div style="margin-left: 205px;font-size:24px;font-family:PingFang-SC-Medium;color: #888888;">
+					卡号：（上面场地方信息）
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:32px;font-family:PingFang-SC-Medium;color: #353535;">合同图片：</div>
+			<div style="margin-left: 427px;font-size:28px;font-family:PingFang-SC-Medium;color: #B3B3B3;">请添加</div>
+			<div style="margin-left: 28px;font-size:38.2px;font-family:PingFang-SC-Medium;line-height: 38.2px;">
+				<img style="width: 20px;height: 38.2px;" src="./images/login_btn_pdl_n@2x.png">
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:32px;font-family:PingFang-SC-Medium;color: #353535;">场地采集表(点击查看）</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:center;position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;background-color: #888888;">
+			<div style="font-size:36px;font-family:PingFang-SC-Medium;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #fff;">
+				清空
+			</div>
+			<div style="font-size:36px;font-family:PingFang-SC-Medium;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #fff;">
+				保存
+			</div>
+			<div style="font-size:36px;font-family:PingFang-SC-Medium;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #fff;">
+				提交
+			</div>
+		</div>
+
+		<div style="height: 88px;width: 100%;"></div>
+	</div>
+</body>
+ <script type="text/javascript">
+ 	// 我们的数据对象
+	var data = { 
+		title: "场地采集",
+		selected: "1"
+	};
+	// 该对象被加入到一个 Vue 实例中
+	var vm = new Vue({
+		el: '#app',
+	  	data: data
+	})
+ </script>
+</html>

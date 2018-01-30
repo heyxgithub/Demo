@@ -1,0 +1,55 @@
+<!doctype html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+    <title>TEST</title>  
+</head>  
+<style type="text/css">  
+   
+    #blockCity{ 
+        position:absolute;
+        z-index: 1;
+        display:none;
+        font-size:9pt;
+        background-color:#FFFFCC;
+        padding:5px; 
+        border:1px solid #F5C66B;
+        width:300px; 
+        height: 100px;  
+      }
+        
+</style>  
+<script type="text/javascript">
+      //显示  
+      function show(){
+        var elem=document.getElementById("blockCity");
+        var ev = ev || window.event;
+        var mousePos = mousePosition(ev);
+        // var elemPos=getElAbsolute(elem);
+        // console.log(elemPos);
+        //elem.innerHTML = "hahah";
+        elem.style.left = mousePos.x-300+'px';
+        elem.style.top = mousePos.y+'px';
+        elem.style.display = "block";
+     }
+     //隐藏
+     function chide(){
+         document.getElementById("blockCity").style.display="none";
+    }
+    //获取鼠标位置
+    function mousePosition(ev){
+     if(ev.pageX || ev.pageY){
+       return {x:ev.pageX, y:ev.pageY};
+     }
+     return {
+       x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+       y:ev.clientY + document.body.scrollTop - document.body.clientTop
+     };
+    } 
+</script>  
+<body>
+    <div style="width: 500px;height: 500px;background-color: red;"></div>
+    <a href="#" onmouseover="show();" onmouseout="chide();" >查看我隐藏的DIV</a>
+   <div style="width: 500px;height: 500px;background-color: red;"></div>
+   <div id='blockCity' onmouseover="show()" onmouseout="chide();"></div>
+</body>
+</html>  

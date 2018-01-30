@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 引入vue.js -->
+<script type="text/javascript" src="./js/vue.js"></script>
+<!-- 引入mint组件库 -->
+<script src="./js/mint.js"></script>
+<!-- 引入mint样式 -->
+<link rel="stylesheet" href="./css/mintStyle.css">
+<title>新建场地采集</title>
+<style type="text/css">
+	html{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+	body{
+		margin: 0px;
+	}
+</style>
+</head>
+ 
+<body>
+	<div id="app">
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #B3B3B3;">合伙人：</div>
+			<div style="margin-left: 76px;font-size:28px;font-family:PingFang-SC-Regular;color: #B3B3B3;">{{model.hhr}}</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">场地信息</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+				<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+			</div>
+			<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地名称：</div>
+			<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+				<input type="text"  placeholder="例如宁波鄞州万达广场1楼" style="border-style:none;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;outline:none;width: 500px;" v-model="model.cdmc"/>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;flex-direction: row;height: 100%;align-items: center;">
+				<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+					<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+				</div>
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地地址：</div>
+			</div>
+			<div style="display: flex;flex-direction: row;height: 100%;align-items: center;">
+				<div v-on:click="config.cddzVisible=true" v-if="model.cddz!=''&&model.cddz!=null&&model.cddz!=undefined" style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					{{model.cddz}}
+				</div>
+				<div v-on:click="config.cddzVisible=true" v-else style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">
+					请选择
+				</div>
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_n@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;">
+			<div style="height: 1px;width: 32px;background-color: #fff;"></div>
+		</div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+				<input type="text"  placeholder="详细地址" style="border-style:none;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;outline:none;width: 600px;" v-model="model.cdmc"/>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+					<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+				</div>
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地类型：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div v-on:click="config.cdlxVisible=true" v-if="model.cdlx!=''&&model.cdlx!=null&&model.cdlx!=undefined" style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					{{model.cdlx}}
+				</div>
+				<div v-on:click="config.cdlxVisible=true" v-else style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">
+					请选择场地类型
+				</div>
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_p@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+					<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+				</div>
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地照片/视频：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div v-on:click="config.cddzVisible=true" v-if="model.cddz!=''&&model.cddz!=null&&model.cddz!=undefined" style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					{{model.cddz}}
+				</div>
+				<div v-on:click="config.cddzVisible=true" v-else style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">
+					请添加
+				</div>
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_n@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">开业时间：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div v-on:click="open('datetime')" v-if="model.kysj!=''&&model.kysj!=null&&model.kysj!=undefined" style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					{{model.kysj}}
+				</div>
+				<div v-on:click="open('datetime')" v-else style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">
+					请选择
+				</div>
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_n@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #B3B3B3;">设备型号：</div>
+			<div style="margin-right: 80px;font-size:28px;font-family:PingFang-SC-Regular;color: #B3B3B3;">{{model.sbxh}}</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+					<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+				</div>
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">拟投放区域数量：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div v-on:click="config.tfqyslVisible=true" v-if="model.tfqysl!=''&&model.tfqysl!=null&&model.tfqysl!=undefined" style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					{{model.tfqysl}}
+				</div>
+				<div v-on:click="config.tfqyslVisible=true" v-else style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">
+					请选择
+				</div>
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_p@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">场地联系信息</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地联系人：</div>
+				<div style="margin-left: 24px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">王思聪</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div v-on:click="model.selectSex=0" style="margin-right: 40px;display: flex;align-items: center;justify-content:flex-start;">
+					<div v-if="model.selectSex==0" style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+						<img src="./images/choose_s@2x.png" style="height: 24px;width: 24px;"/>
+					</div>
+					<div v-if="model.selectSex==1" style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+						<img src="./images/choose_u@2x.png" style="height: 24px;width: 24px;">
+					</div>
+					<div style="margin-left: 20px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+						男士
+					</div>
+				</div>
+				<div v-on:click="model.selectSex=1" style="margin-right: 20px;display: flex;align-items: center;justify-content:flex-start;">
+					<div v-if="model.selectSex==1" style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+						<img src="./images/choose_s@2x.png" style="height: 24px;width: 24px;"/>
+					</div>
+					<div v-if="model.selectSex==0" style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+						<img src="./images/choose_u@2x.png" style="height: 24px;width: 24px;">
+					</div>
+					<div style="margin-left: 20px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+						女士
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地电话：</div>
+			<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+				<input type="text" style="border-style:none;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;outline:none;width: 500px;" v-model="model.cddh"/>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">合作信息</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+					<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+				</div>
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">拟合作期限：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+					<input type="text"  style="border-style:none;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;outline:none;width: 30px;" v-model="model.nhzqx"/>
+				</div>
+				<div style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">月</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 15px;display: flex;align-items: flex-start;height: 100%;">
+					<img style="width: 20px;height: 20px;margin-top: 32px;" src="./images/icon_required@2x.png">
+				</div>
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">拟合作模式：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div v-on:click="config.nhzmsVisible=true" v-if="model.nhzms!=''&&model.nhzms!=null&&model.nhzms!=undefined" style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;">
+					{{model.nhzms}}
+				</div>
+				<div v-on:click="config.nhzmsVisible=true" v-else style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Regular;color: #888888;">
+					请选择
+				</div>
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_p@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 60px;width: 100%;display: flex;align-items: center;justify-content:flex-start;background-color: #F2F2F2">
+			<div style="margin-left: 31px;font-size:20px;font-family:PingFang-SC-Medium;color: #353535;">其他</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="margin-left: 32px;display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">其他费用：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-right: 20px;align-items: center;justify-content:center;font-size:28px;font-family:PingFang-SC-Regular;color: #353535;padding-top: 8px;">
+						<img style="width:36px;height:36px;" src="./images/login_btn_pdl_p@2x.png">
+				</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:space-between;">
+			<div style="margin-left: 32px;display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">场地押金：</div>
+			</div>
+			<div style="display: flex;align-items: center;height: 100%;flex-direction: row;">
+				<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+					<input type="text"  style="border-style:none;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;outline:none;width: 30px;" v-model="model.cdyj"/>
+				</div>
+				<div style="margin-right: 20px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">元</div>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:flex-start;">
+			<div style="margin-left: 32px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">其他说明：</div>
+			<div style="margin-left: 49px;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;">
+				<input type="text" style="border-style:none;font-size:28px;font-family:PingFang-SC-Medium;color: #353535;outline:none;width: 500px;" v-model="model.qtsm"/>
+			</div>
+		</div>
+		<div style="height: 1px;width: 100%;background-color: #e5e5e5;"></div>
+
+		<div style="height: 88px;width: 100%;display: flex;align-items: center;justify-content:center;position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;background-color: #888888;">
+			<div style="font-size:36px;font-family:PingFang-SC-Medium;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #fff;">
+				清空
+			</div>
+			<div style="font-size:36px;font-family:PingFang-SC-Medium;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #fff;">
+				保存
+			</div>
+			<div style="font-size:36px;font-family:PingFang-SC-Medium;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #fff;">
+				提交
+			</div>
+		</div>
+		
+
+		<div style="height: 88px;width: 100%;"></div>
+
+		<mt-popup
+		  v-model="config.cddzVisible"
+		  position="bottom"
+		  style="width: 100%;height: 40%;"
+		  >
+		  <div style="height: 40px;width: 100%;display: flex;align-items: center;justify-content:center;border-bottom: 1px solid #e5e5e5;">
+			<div v-on:click='onAddressSrue()' style="font-size:17px;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #62bcff;">
+				确定
+			</div>
+			<div v-on:click='config.cddzVisible=false' style="font-size:17px;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #62bcff;">
+				取消
+			</div>
+		  </div>
+		  <mt-picker :slots="config.addressSlots" @change="onAddressChange" :visible-item-count="5"></mt-picker>
+		</mt-popup>
+
+		<mt-popup
+		  v-model="config.cdlxVisible"
+		  position="bottom"
+		  style="width: 100%;height: 40%;"
+		  >
+		  <div style="height: 40px;width: 100%;display: flex;align-items: center;justify-content:center;border-bottom: 1px solid #e5e5e5;">
+			<div v-on:click='onAddressTypeSrue()' style="font-size:17px;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #62bcff;">
+				确定
+			</div>
+			<div v-on:click='config.cdlxVisible=false' style="font-size:17px;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #62bcff;">
+				取消
+			</div>
+		  </div>
+		  <mt-picker :slots="config.addressTypeSlots" @change="onAddressTypeChange" :visible-item-count="5"></mt-picker>
+		</mt-popup>
+
+		<mt-popup
+		  v-model="config.nhzmsVisible"
+		  position="bottom"
+		  style="width: 100%;height: 40%;"
+		  >
+		  <div style="height: 40px;width: 100%;display: flex;align-items: center;justify-content:center;border-bottom: 1px solid #e5e5e5;">
+			<div v-on:click='nhzmsSrue()' style="font-size:17px;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #62bcff;">
+				确定
+			</div>
+			<div v-on:click='config.nhzmsVisible=false' style="font-size:17px;color: #353535;display: flex;align-items: center;justify-content:center;width: 100%;height: 100%;border: 0.5px solid #fff;color: #62bcff;">
+				取消
+			</div>
+		  </div>
+		  <mt-picker :slots="config.nhzmsSlots" @change="nhzmsChange" :visible-item-count="5"></mt-picker>
+		</mt-popup>
+
+	</div>
+</body>
+ <script type="text/javascript">
+ 	var address = {
+    '北京': ['北京'],
+    '广东': ['广州', '深圳', '珠海', '汕头', '韶关', '佛山', '江门', '湛江', '茂名', '肇庆', '惠州', '梅州', '汕尾', '河源', '阳江', '清远', '东莞', '中山', '潮州', '揭阳', '云浮'],
+    '上海': ['上海'],
+    '天津': ['天津'],
+    '重庆': ['重庆'],
+    '辽宁': ['沈阳', '大连', '鞍山', '抚顺', '本溪', '丹东', '锦州', '营口', '阜新', '辽阳', '盘锦', '铁岭', '朝阳', '葫芦岛'],
+    '江苏': ['南京', '苏州', '无锡', '常州', '镇江', '南通', '泰州', '扬州', '盐城', '连云港', '徐州', '淮安', '宿迁'],
+    '湖北': ['武汉', '黄石', '十堰', '荆州', '宜昌', '襄樊', '鄂州', '荆门', '孝感', '黄冈', '咸宁', '随州', '恩施土家族苗族自治州', '仙桃', '天门', '潜江', '神农架林区'],
+    '四川': ['成都', '自贡', '攀枝花', '泸州', '德阳', '绵阳', '广元', '遂宁', '内江', '乐山', '南充', '眉山', '宜宾', '广安', '达州', '雅安', '巴中', '资阳', '阿坝藏族羌族自治州', '甘孜藏族自治州', '凉山彝族自治州'],
+    '陕西': ['西安', '铜川', '宝鸡', '咸阳', '渭南', '延安', '汉中', '榆林', '安康', '商洛'],
+    '河北': ['石家庄', '唐山', '秦皇岛', '邯郸', '邢台', '保定', '张家口', '承德', '沧州', '廊坊', '衡水'],
+    '山西': ['太原', '大同', '阳泉', '长治', '晋城', '朔州', '晋中', '运城', '忻州', '临汾', '吕梁'],
+    '河南': ['郑州', '开封', '洛阳', '平顶山', '安阳', '鹤壁', '新乡', '焦作', '濮阳', '许昌', '漯河', '三门峡', '南阳', '商丘', '信阳', '周口', '驻马店'],
+    '吉林': ['长春', '吉林', '四平', '辽源', '通化', '白山', '松原', '白城', '延边朝鲜族自治州'],
+    '黑龙江': ['哈尔滨', '齐齐哈尔', '鹤岗', '双鸭山', '鸡西', '大庆', '伊春', '牡丹江', '佳木斯', '七台河', '黑河', '绥化', '大兴安岭地区'],
+    '内蒙古': ['呼和浩特', '包头', '乌海', '赤峰', '通辽', '鄂尔多斯', '呼伦贝尔', '巴彦淖尔', '乌兰察布', '锡林郭勒盟', '兴安盟', '阿拉善盟'],
+    '山东': ['济南', '青岛', '淄博', '枣庄', '东营', '烟台', '潍坊', '济宁', '泰安', '威海', '日照', '莱芜', '临沂', '德州', '聊城', '滨州', '菏泽'],
+    '安徽': ['合肥', '芜湖', '蚌埠', '淮南', '马鞍山', '淮北', '铜陵', '安庆', '黄山', '滁州', '阜阳', '宿州', '巢湖', '六安', '亳州', '池州', '宣城'],
+    '浙江': ['杭州', '宁波', '温州', '嘉兴', '湖州', '绍兴', '金华', '衢州', '舟山', '台州', '丽水'],
+    '福建': ['福州', '厦门', '莆田', '三明', '泉州', '漳州', '南平', '龙岩', '宁德'],
+    '湖南': ['长沙', '株洲', '湘潭', '衡阳', '邵阳', '岳阳', '常德', '张家界', '益阳', '郴州', '永州', '怀化', '娄底', '湘西土家族苗族自治州'],
+    '广西': ['南宁', '柳州', '桂林', '梧州', '北海', '防城港', '钦州', '贵港', '玉林', '百色', '贺州', '河池', '来宾', '崇左'],
+    '江西': ['南昌', '景德镇', '萍乡', '九江', '新余', '鹰潭', '赣州', '吉安', '宜春', '抚州', '上饶'],
+    '贵州': ['贵阳', '六盘水', '遵义', '安顺', '铜仁地区', '毕节地区', '黔西南布依族苗族自治州', '黔东南苗族侗族自治州', '黔南布依族苗族自治州'],
+    '云南': ['昆明', '曲靖', '玉溪', '保山', '昭通', '丽江', '普洱', '临沧', '德宏傣族景颇族自治州', '怒江傈僳族自治州', '迪庆藏族自治州', '大理白族自治州', '楚雄彝族自治州', '红河哈尼族彝族自治州', '文山壮族苗族自治州', '西双版纳傣族自治州'],
+    '西藏': ['拉萨', '那曲地区', '昌都地区', '林芝地区', '山南地区', '日喀则地区', '阿里地区'],
+    '海南': ['海口', '三亚', '五指山', '琼海', '儋州', '文昌', '万宁', '东方', '澄迈县', '定安县', '屯昌县', '临高县', '白沙黎族自治县', '昌江黎族自治县', '乐东黎族自治县', '陵水黎族自治县', '保亭黎族苗族自治县', '琼中黎族苗族自治县'],
+    '甘肃': ['兰州', '嘉峪关', '金昌', '白银', '天水', '武威', '酒泉', '张掖', '庆阳', '平凉', '定西', '陇南', '临夏回族自治州', '甘南藏族自治州'],
+    '宁夏': ['银川', '石嘴山', '吴忠', '固原', '中卫'],
+    '青海': ['西宁', '海东地区', '海北藏族自治州', '海南藏族自治州', '黄南藏族自治州', '果洛藏族自治州', '玉树藏族自治州', '海西蒙古族藏族自治州'],
+    '新疆': ['乌鲁木齐', '克拉玛依', '吐鲁番地区', '哈密地区', '和田地区', '阿克苏地区', '喀什地区', '克孜勒苏柯尔克孜自治州', '巴音郭楞蒙古自治州', '昌吉回族自治州', '博尔塔拉蒙古自治州', '石河子', '阿拉尔', '图木舒克', '五家渠', '伊犁哈萨克自治州'],
+    '香港': ['香港'],
+    '澳门': ['澳门'],
+    '台湾': ['台北市', '高雄市', '台北县', '桃园县', '新竹县', '苗栗县', '台中县', '彰化县', '南投县', '云林县', '嘉义县', '台南县', '高雄县', '屏东县', '宜兰县', '花莲县', '台东县', '澎湖县', '基隆市', '新竹市', '台中市', '嘉义市', '台南市']
+  };
+  var city = {
+  	'宁波':['鄞州','海曙','江北','江东']
+  };
+  var addressType = ['商业广场','电影院','候机大厅','高铁站','客运中心','大型景区','游乐场','商务酒店','医院','其他各种业态'];
+  var nhzmsArry = ['合作模式','租金模式'];
+
+ 	// 我们的数据对象
+	var data = {
+		model:{
+			hhr: "旺财(P016)[阚广东(P019)]",
+			cdmc:"",
+			cddz:"",
+			cdlx:'',
+			kysj:'',
+			sbxh:'b9',
+			selectSex:0,
+			cddh:'',
+			nhzqx:0,
+			nhzms:'',
+			cdyj:0,
+			qtsm:''
+		}, 
+		config:{
+			hasCddz:false,
+			cddzVisible:false,
+			addressProvince:'',
+			addressCity:'',
+			addressArea:'',
+			cdlxVisible:false,
+			addressType:'',
+			kysjVisible:false,
+			tfqyslVisible:false,
+			nhzmsVisible:false,
+			nhzms:'',
+			addressSlots:[
+	          {
+	            flex: 1,
+	            values: Object.keys(address),
+	            className: 'slot1',
+	            textAlign: 'center'
+	          }, {
+	            divider: true,
+	            content: '-',
+	            className: 'slot2'
+	          }, {
+	            flex: 1,
+	            values: ['北京'],
+	            className: 'slot3',
+	            textAlign: 'center'
+	          }, {
+	            divider: true,
+	            content: '-',
+	            className: 'slot2'
+	          }, {
+	            flex: 1,
+	            values: ['北京'],
+	            className: 'slot3',
+	            textAlign: 'center'
+	          }
+	        ],
+	        addressTypeSlots:[
+	          {
+	            flex: 1,
+	            values: addressType,
+	            className: 'slot1',
+	            textAlign: 'center'
+	          }  		
+	        ],
+	        nhzmsSlots:[
+	          {
+	            flex: 1,
+	            values: nhzmsArry,
+	            className: 'slot1',
+	            textAlign: 'center'
+	          }  		
+	        ]
+		}
+	};
+	// 该对象被加入到一个 Vue 实例中
+	var vm = new Vue({
+		el: '#app',
+	  	data: data,
+	  	methods:{
+	  		onAddressChange(picker, values) {
+		        picker.setSlotValues(1, address[values[0]]);
+		        picker.setSlotValues(2, city[values[1]]);
+		        this.config.addressProvince = values[0];
+		        this.config.addressCity = values[1];
+		        this.config.addressArea = values[2];
+		    },
+		    onAddressSrue() {
+		        this.model.cddz=this.config.addressProvince+'省 '+this.config.addressCity+'市 '+this.config.addressArea+'区';
+		        this.config.cddzVisible=false;
+		    },
+		    onAddressTypeSrue() {
+		        this.model.cdlx=this.config.addressType;
+		        this.config.cdlxVisible=false;
+		    },
+		    onAddressTypeChange(picker, values) {
+		        this.config.addressType = values[0];
+		    },
+		    nhzmsChange(picker, values) {
+		        this.config.nhzms = values[0];
+		    },
+		    nhzmsSrue() {
+		        this.model.nhzms = this.config.nhzms;
+		        this.config.nhzmsVisible = false;
+		    }
+	  	}
+	})
+ </script>
+</html>

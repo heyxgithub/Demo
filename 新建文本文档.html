@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 引入vue.js -->
+<script type="text/javascript" src="./js/vue.js"></script>
+<!-- 引入mint组件库 -->
+<script src="./js/mint.js"></script>
+<!-- 引入mint样式 -->
+<link rel="stylesheet" href="./css/mintStyle.css">
+<!-- 引入jquery -->
+<script src="./js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="./css/jquery.datetimepicker.min.css">
+<script src="./js/jquery.datetimepicker.full.js"></script>
+<script src="./js/jquery.datetimepicker.full.min.js"></script>
+<title>合同审批</title>
+<style type="text/css">
+  html{
+    margin: 0;
+  }
+  body{
+    margin: 0px;
+  }
+</style>
+</head>
+ 
+<body>
+  <input id="datetimepicker" type="text" name="">
+  <div id="app">
+    <button v-on:click="open()"></button>
+  </div>
+</body>
+ <script type="text/javascript">
+  // 我们的数据对象
+  var data = { 
+    title: "场地采集",
+    selected: "1",
+    value2:''
+  };
+  // 该对象被加入到一个 Vue 实例中
+  var vm = new Vue({
+    el: '#app',
+    data: data,
+    methods:{
+        open() {
+          document.getElementById('datetimepicker').click();
+        }
+    },
+    created: function () {
+
+      jQuery.datetimepicker.setLocale('ch');
+      jQuery('#datetimepicker').datetimepicker();
+     //    $.ajax({
+      //     url: 'http://42.159.244.19/kong/interface/index.php',
+      //     dataType: 'json',
+      //     method: 'GET',
+      //     success: function(data) {
+      //      console.log(data)
+      //         if (data.code == 1) {
+      //              vm.model=data.msg;          
+      //         }else{
+      //          alert('加载数据失败，请检查网络是否稳定！');
+      //         }
+      //     },
+      //         error: function(xhr) {
+      //         // 导致出错的原因较多，以后再研究
+      //         console.log('error:' + JSON.stringify(xhr));
+      //         alert('加载数据失败，请检查网络是否稳定！');
+      //     }
+      // });
+    }
+  })
+ </script>
+</html>
